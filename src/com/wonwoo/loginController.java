@@ -6,10 +6,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.ui.ModelMap;
 
 @Controller
-@RequestMapping("/index")
-public class indexController {
+@RequestMapping("/login")
+public class loginController {
     @RequestMapping(method = RequestMethod.GET)
-    public String showIndex() {
-        return "index";
+    public String showLogin(ModelMap model) {
+        model.addAttribute("message", "Hello World!");
+        return "login";
     }
 }
