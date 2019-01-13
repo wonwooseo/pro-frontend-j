@@ -1,16 +1,14 @@
-package com.wonwoo;
+package com.wonwoo.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.ui.ModelMap;
 
 @Controller
-@RequestMapping("/signup")
-public class signupController {
+@RequestMapping("/index")
+public class indexController {
     @RequestMapping(method = RequestMethod.GET)
-    public String showIndex(ModelMap model) {
-        model.addAttribute("message", "Hello World!");
-        return "signup";
+    public String showIndex() {
+        return "index";
     }
 }

@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -34,10 +35,10 @@
     <body>
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-black navbar-dark fixed-top">
-            <a href="/prodigal_app" id="navbar_logo" class="navbar-brand"><img src="<c:url value="/resources/images/navbar_logo.png"/>" alt="prodigal_logo_horizontal"></a>
+            <a href="/index" id="navbar_logo" class="navbar-brand"><img src="<c:url value="/resources/images/navbar_logo.png"/>" alt="prodigal_logo_horizontal"></a>
             <ul class="nav navbar-nav ml-auto justify-content-end">
                 <li class="nav-item">
-                    <a href="login" id="navbar_login" class="nav-link" style="font-size: 20px">Login</a>
+                    <a href="/login" id="navbar_login" class="nav-link" style="font-size: 20px">Login</a>
                 </li>
             </ul>
         </nav>
@@ -53,39 +54,39 @@
                             <h2 align="center"> <b>Join Prodigal</b> </h2>
                         {% endif %}
                     </div>
-                    <form class="card-body" id="form_id" method="post" name="myform" action="create_user">
+                    <form:form class="card-body" id="form_id" method="post" name="myform" action="/createUser" modelAttribute="user">
                         {% csrf_token %}
                         <div id="input_list">
                             <ul class="list-group">
                                 <li class="list-group-item">
                                     <label><b>Gender</b></label><br>
                                     <span style="white-space:nowrap;margin-right:16px">
-                                        <input type="radio" id="male" name="gender" value="Male" checked>
+                                        <form:radiobutton path="gender" value="Male" checked="checked"/>
                                         Male
                                     </span>
                                     <span style="white-space:nowrap;">
-                                        <input type="radio" id="female" name="gender" value="Female">
+                                        <form:radiobutton path="gender" value="Female"/>
                                         Female
                                     </span>
                                 </li>
                                 <li class="list-group-item">
                                     <label><b>User Name</b></label><br>
-                                    <input class="w-100 form-control" type="text" placeholder="Enter Username" name="username" required>
+                                    <form:input path="username" class="w-100 form-control" placeholder="Enter Username" required="required"/>
                                 </li>
                                 <li class="list-group-item">
                                     <label><b>Email Address</b></label><br>
-                                    <input class="w-100 form-control" type="text" placeholder="Enter email address" name="email" required>
+                                    <form:input path="email" class="w-100 form-control" type="email" placeholder="Enter email address" required="required"/>
                                 </li>
                                 <li class="list-group-item">
                                     <label><b>Password</b></label><br>
-                                    <input class="w-100 form-control" type="password" placeholder="Enter Password" name="password" required>
+                                    <form:password path="password" class="w-100 form-control" placeholder="Enter Password" required="required"/>
                                 </li>
                             </ul>
                         </div>
                         <div id="bottom_form" class="text-center" style="margin: 24px 0 12px 0;">
                             <button class="w-50 btn btn-primary" type="submit" id="submit">Sign Up!</button>
                         </div>
-                    </form>
+                    </form:form>
                 </div>
             </div>
         </div>

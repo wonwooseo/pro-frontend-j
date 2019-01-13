@@ -50,7 +50,7 @@
             <div id="form" style="width: 100%; max-width: 500px; margin:0 auto 80px auto; padding-top:200px">
                 <div class="card shadow-lg" style="max-width:2000px;">
                     <div class="card-header" style="padding: 24px 0 24px 0">
-                        {% if messages %}
+                        ${message}
                             {% for message in messages %}
                                 <h2 id="login_fail_msg" align="center"> <b>{{ message }}</b> </h2>
                             {% endfor %}

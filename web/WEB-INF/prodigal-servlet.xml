@@ -9,12 +9,10 @@
     <mvc:annotation-driven/>
     <mvc:resources mapping="/resources/**" location="/resources/"/>
 
-    <!-- DB config here
     <jdbc:embedded-database id="webapp" type="HSQL">
         <jdbc:script location="db/sql/create-db.sql"/>
-        <jdbc:script location="db/sql/insert-data.sql"/>
+        <!--<jdbc:script location="db/sql/insert-data.sql"/>-->
     </jdbc:embedded-database>
-    -->
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name = "prefix" value = "/WEB-INF/jsp/" />

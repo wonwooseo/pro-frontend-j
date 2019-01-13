@@ -7,4 +7,4 @@ CREATE TABLE User (
   salt VARCHAR(100),
   history VARCHAR(100000),
   favorites VARCHAR(100000)
-)
+);
