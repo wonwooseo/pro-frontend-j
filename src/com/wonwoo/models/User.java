@@ -1,5 +1,10 @@
 package com.wonwoo.models;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
+import java.security.SecureRandom;
+import java.util.Base64;
+
 public class User {
     private int userID;
     private String username;
@@ -31,7 +36,7 @@ public class User {
     }
 
     public void setEmail(String input) {
-        // TODO: email validation
+        // email validation?
         email = input;
     }
 
@@ -48,15 +53,17 @@ public class User {
     }
 
     public void setPassword(String input) {
-        password = input;
+        // creating salt
+        SecureRandom rng = new SecureRandom();
+        byte[] random = new byte[48];
+        rng.nextBytes(random);
+        this.salt = Base64.getEncoder().encodeToString(random);
+        // password hashing
+        this.password = DigestUtils.sha256Hex(input + this.salt);
     }
 
     public String getSalt() {
         return salt;
-    }
-
-    public void setSalt(String input) {
-        salt = input;
     }
 
     public String getHistory() {

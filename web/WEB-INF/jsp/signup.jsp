@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix = "cjstl" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -46,16 +47,16 @@
             <div id="form" style="width: 100%; max-width:500px; margin:0 auto 80px auto; padding-top:200px">
                 <div class="card shadow-lg" style="max-width:2000px;">
                     <div class="card-header" style="padding: 24px 0 24px 0">
-                        {% if messages %}
-                            {% for message in messages %}
-                                <h2 id="signup_fail_msg" align="center" style="font-size: 24px;"> <b>{{ message }}</b> </h2>
-                            {% endfor %}
-                        {% else %}
-                            <h2 align="center"> <b>Join Prodigal</b> </h2>
-                        {% endif %}
+                        <cjstl:choose>
+                            <cjstl:when test="${message != null}">
+                                <h2 id="signup_fail_msg" align="center" style="font-size: 24px;"> <b>${message}</b> </h2>
+                            </cjstl:when>
+                            <cjstl:otherwise>
+                                <h2 align="center"> <b>Join Prodigal</b> </h2>
+                            </cjstl:otherwise>
+                        </cjstl:choose>
                     </div>
                     <form:form class="card-body" id="form_id" method="post" name="myform" action="/createUser" modelAttribute="user">
-                        {% csrf_token %}
                         <div id="input_list">
                             <ul class="list-group">
                                 <li class="list-group-item">
