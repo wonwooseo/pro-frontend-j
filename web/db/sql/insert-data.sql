@@ -1,0 +1,1 @@
+INSERT INTO User(username, email, gender, password, salt) VALUES('test1', 'test1@prodigal.com', 'Male', '74f6a05c0127bc1527130b111007bab0af569ea148fdaf1e4070514965468eba', '015kPXL56rplbFcmPAFEaUJhp6GNFEDRsrhljXfzCjp3+B+McO8288AWIYOL4bKc')

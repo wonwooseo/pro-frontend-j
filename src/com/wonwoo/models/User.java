@@ -19,10 +19,6 @@ public class User {
         return userID;
     }
 
-    public void setUserID(int input) {
-        userID = input;
-    }
-
     public String getUsername() {
         return username;
     }
@@ -52,6 +48,10 @@ public class User {
         return password;
     }
 
+    /**
+     * Creates new salt randomly, set it then use it to hash the given password
+     * @param input raw password string
+     */
     public void setPassword(String input) {
         // creating salt
         SecureRandom rng = new SecureRandom();
@@ -59,7 +59,7 @@ public class User {
         rng.nextBytes(random);
         this.salt = Base64.getEncoder().encodeToString(random);
         // password hashing
-        this.password = DigestUtils.sha256Hex(input + this.salt);
+        this.password = hashPassword(input, this.salt);
     }
 
     public String getSalt() {
@@ -80,5 +80,15 @@ public class User {
 
     public void setFavorites(String input) {
         favorites = input;
+    }
+
+    /**
+     * Method to hash raw password. Made static for use in login query.
+     * @param rawPassword raw password string
+     * @param salt salt string
+     * @return hashed password string
+     */
+    static public String hashPassword(String rawPassword, String salt) {
+        return DigestUtils.sha256Hex(rawPassword + salt);
     }
 }
